@@ -7,9 +7,9 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class News extends BaseController
 {
-    public function index()
-    {
-        $model = model(NewsModel::class);
+	public function index()
+	{
+		$model = model(NewsModel::class);
 
         $data = [
             'news'  => $model->getNews(),
@@ -20,14 +20,14 @@ class News extends BaseController
             . view('news/index')
             . view('templates/footer');
     }
-
-    public function show($slug = null)
+	
+	public function show($slug = null)
     {
         $model = model(NewsModel::class);
-
-        $data['news'] = $model->getNews($slug);
-
-        if (empty($data['news'])) {
+		
+		$data['news'] = $model->getNews($slug);
+		
+		if (empty($data['news'])) {
             throw new PageNotFoundException('Cannot find the news item: ' . $slug);
         }
 
