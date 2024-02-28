@@ -7,6 +7,14 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Books extends BaseController
 {
+	public function home()
+	{
+		return view('templates/header')
+			. view('templates/nav')
+            . view('books/home')
+            . view('templates/footer');
+	}
+	
 	public function index()
 	{
 		$model = model(BooksModel::class);
@@ -17,6 +25,7 @@ class Books extends BaseController
         ];
 
         return view('templates/header', $data)
+			. view('templates/nav')
             . view('books/index')
             . view('templates/footer');
     }
@@ -34,6 +43,7 @@ class Books extends BaseController
         $data['title'] = $data['books']['title'];
 
         return view('templates/header', $data)
+			. view('templates/nav')
             . view('books/view')
             . view('templates/footer');
     }
@@ -43,6 +53,7 @@ class Books extends BaseController
         helper('form');
 
         return view('templates/header', ['title' => 'Add a book'])
+			. view('templates/nav')
             . view('books/create')
             . view('templates/footer');
     }
@@ -78,6 +89,7 @@ class Books extends BaseController
         ]);
 
         return view('templates/header', ['title' => 'Add a book'])
+			. view('templates/nav')
             . view('books/success')
             . view('templates/footer');
     }

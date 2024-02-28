@@ -22,5 +22,5 @@
     <textarea name="image" cols="45" rows="4"><?= set_value('image') ?></textarea>
     <br>
 
-    <input type="submit" name="submit" value="Add book">
+    <input class="btn btn-outline-secondary btn-sm" type="submit" name="submit" value="Add book">
 </form>
