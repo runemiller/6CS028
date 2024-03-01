@@ -5,6 +5,7 @@ use App\Controllers\Pages;
 use App\Controllers\Users;
 use App\Controllers\News;
 use App\Controllers\Books;
+use App\Controllers\Front;
 
 /**
  * @var RouteCollection $routes
@@ -20,8 +21,8 @@ $routes->get('news/new', [News::class, 'new']);
 $routes->post('news', [News::class, 'create']);
 $routes->get('news/(:segment)', [News::class, 'show']);
 
-$routes->get('books', [Books::class, 'home']);
-$routes->get('books/view', [Books::class, 'index']);
+$routes->get('home', [Front::class, 'home']);
+$routes->get('books', [Books::class, 'index']);
 $routes->get('books/new', [Books::class, 'new']);
 $routes->post('books', [Books::class, 'create']);
 $routes->get('books/(:segment)', [Books::class, 'show']);

@@ -7,10 +7,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/books/">Home</a>
+					<a class="nav-link active" aria-current="page" href="/home/">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" href="/books/view">Books</a>
+					<a class="nav-link active" href="/books/">Books</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

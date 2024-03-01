@@ -4,4 +4,5 @@
 <p><u>Story Synopsis:</u></p>
 <p><?= esc($books['synopsis']) ?></p>
 <img src="<?= esc($books['image']) ?>" style="height: 10%; width: 10%;" class="img-thumbnail">
-<br>
+<br><br><br><br>
+<a href="/books/">Return to all Books</a>

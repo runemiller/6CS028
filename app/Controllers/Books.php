@@ -7,14 +7,6 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Books extends BaseController
 {
-	public function home()
-	{
-		return view('templates/header')
-			. view('templates/nav')
-            . view('books/home')
-            . view('templates/footer');
-	}
-	
 	public function index()
 	{
 		$model = model(BooksModel::class);
