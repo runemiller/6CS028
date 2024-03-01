@@ -5,6 +5,7 @@ use App\Controllers\Pages;
 use App\Controllers\Users;
 use App\Controllers\News;
 use App\Controllers\Books;
+use App\Controllers\Marks;
 use App\Controllers\Front;
 
 /**
@@ -22,15 +23,15 @@ $routes->post('news', [News::class, 'create']);
 $routes->get('news/(:segment)', [News::class, 'show']);
 
 $routes->get('home', [Front::class, 'home']);
+
 $routes->get('books', [Books::class, 'index']);
 $routes->get('books/new', [Books::class, 'new']);
 $routes->post('books', [Books::class, 'create']);
 $routes->get('books/(:segment)', [Books::class, 'show']);
 
-
-
-
-
-
+$routes->get('marks', [Marks::class, 'index']);
+$routes->get('marks/new', [Marks::class, 'new']);
+$routes->post('marks', [Marks::class, 'create']);
+$routes->get('marks/(:segment)', [Marks::class, 'show']);
 
 $routes->get('(:segment)', [Pages::class, 'view']);

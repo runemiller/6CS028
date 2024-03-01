@@ -56,18 +56,15 @@ class Books extends BaseController
 
         $data = $this->request->getPost(['title', 'author', 'synopsis', 'image']);
 
-        // Checks whether the submitted data passed the validation rules.
         if (! $this->validateData($data, [
             'title' => 'required|max_length[255]|min_length[3]',
 			'author' => 'required|max_length[255]|min_length[3]',
             'synopsis'  => 'required|max_length[9000]|min_length[10]',
 			'image'  => 'required|max_length[1000]|min_length[10]',
         ])) {
-            // The validation fails, so returns the form.
             return $this->new();
         }
 
-        // Gets the validated data.
         $post = $this->validator->getValidated();
 
         $model = model(BooksModel::class);

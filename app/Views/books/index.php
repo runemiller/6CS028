@@ -1,7 +1,7 @@
 <?php if (! empty($books) && is_array($books)): ?>
 
     <h2><?= esc($title) ?></h2>
-	<p><a href="/books/new">Create New Book Entry</a><p>
+	<p><a href="/books/new">Create New Book Entry</a></p>
 	<br><br>
 	<?php foreach ($books as $books_item): ?>
 
