@@ -1,13 +1,16 @@
 <h2><?= esc($title) ?></h2>
 <br>
-<label for="title">Enter book title:</label>
+<label for="srINP">Enter book title:</label>
 <div class="d-flex">
-	<input class="form-control me-2" placeholder="Search" aria-label="Search"type="text" id="title">
+	<input class="form-control me-2" placeholder="Search" aria-label="Search" type="text" id="srINP">
 	<button class="btn btn-outline-secondary btn-sm" type="submit" onclick="searchBook()">Search</button>
 </div>
 <br><br>
+<div name="title" id="title"></div>
+<div name="author" id="author"></div>
+<div name="synopsis" id="synopsis"></div>
+<div name="image" id="image"></div>
 <div id="book-details"></div>
-<div id="cover"></div>
 
 <script>
 	function handleKeyPress(event) 
@@ -20,7 +23,7 @@
 	
 	function searchBook() 
 	{
-		const title = document.getElementById('title').value;
+		const title = document.getElementById('srINP').value;
 		const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=1`;
 
 		fetch(apiUrl)
@@ -31,28 +34,28 @@
 
 	function displayBookDetails(data) 
 	{
-		const detailsElement = document.getElementById('book-details');
-		const coverElement = document.getElementById('cover');
+		const titleElement = document.getElementById('title');
+		const authorElement = document.getElementById('author');
+		const synopsisElement = document.getElementById('synopsis');
+		const imageElement = document.getElementById('image');
 
-		if (data.items && data.items.length > 0) {
+		if (data.items && data.items.length > 0) 
+		{
 			const book = data.items[0].volumeInfo;
 			const coverUrl = book.imageLinks ? book.imageLinks.thumbnail : '';
 			const synopsis = book.description ? book.description : 'No synopsis available';
 
-			coverElement.innerHTML = coverUrl ? `<img src="${coverUrl}" alt="Book Cover">` : '';
-			detailsElement.innerHTML = `
-				<h2>${book.title}</h2>
-				<p>By: ${book.authors ? book.authors.join(', ') : 'Unknown'}</p>
-				<br>
-				<p><u>Story Synopsis:</u> <br> ${synopsis}</p>
-			`;
+			titleElement.innerHTML = `<h2>${book.title}</h2>`;
+			authorElement.innerHTML = `<p>By: ${book.authors ? book.authors.join(', ') : 'Unknown'}</p>`;
+			synopsisElement.innerHTML = `<br><p><u>Story Synopsis:</u></p><p>${synopsis}</p>`;
+			imageElement.innerHTML = coverUrl ? `<img src="${coverUrl}" alt="Book Cover" style="height: 20%; width: 20%;" class="img-thumbnail">` : '';
 		} 
 		else 
 		{
 			detailsElement.innerHTML = 'No book found';
-			coverElement.innerHTML = '';
+			imageElement.innerHTML = '';
 		}
 	}
 	
-	document.getElementById('title').addEventListener('keypress', handleKeyPress);
+	document.getElementById('srINP').addEventListener('keypress', handleKeyPress);
 </script>
