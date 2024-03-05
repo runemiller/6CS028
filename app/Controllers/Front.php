@@ -24,4 +24,16 @@ class Front extends BaseController
             . view('home/home')
             . view('templates/footer');
 	}
+	
+	public function search()
+	{
+		$data = [
+            'title' => "Book Search",
+        ];
+		
+		return view('templates/header', $data)
+			. view('templates/nav')
+            . view('home/search')
+            . view('templates/footer');
+	}
 }
