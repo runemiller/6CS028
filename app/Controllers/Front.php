@@ -36,4 +36,9 @@ class Front extends BaseController
             . view('home/search')
             . view('templates/footer');
 	}
+	
+	public function add()
+	{
+		return view('home/addfromapi');
+	}
 }

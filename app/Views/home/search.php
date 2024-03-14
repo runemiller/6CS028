@@ -12,6 +12,10 @@
 <div name="image" id="image"></div>
 <div id="book-details"></div>
 
+<form action="/home/add">
+	<button class="btn btn-outline-secondary btn-sm" type="submit">Add Book</button>
+</form>
+
 <script>
 	function handleKeyPress(event) 
 	{
