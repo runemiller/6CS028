@@ -28,7 +28,7 @@ $routes->get('news/(:segment)', [News::class, 'show']);
 
 $routes->get('home', [Front::class, 'home']);
 $routes->get('home/search', [Front::class, 'search']);
-$routes->get('home/add', [Front::class, 'add']);
+$routes->post('home', [Front::class, 'create']);
 
 $routes->get('books', [Books::class, 'index']);
 $routes->get('books/new', [Books::class, 'new']);
