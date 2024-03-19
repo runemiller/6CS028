@@ -1,6 +1,6 @@
 <?php if (! empty($marks) && is_array($marks)): ?>
 
-	<h2><? = esc($title) ?></h2>
+	<h2><?= esc($title) ?></h2>
 	<p><a href="/marks/new">Create New Bookmark Entry</a></p>
 	<br><br>
 	<?php foreach ($marks as $marks_item): ?>

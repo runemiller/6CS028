@@ -5,10 +5,10 @@
 	<input class="form-control me-2" placeholder="Search" aria-label="Search" type="text" id="srINP">
 	<button class="btn btn-outline-secondary btn-sm" type="submit" onclick="searchBook()">Search</button>
 </div>
+<div id="suggestions"></div>
 <br><br>
 
 <div name="title" id="title"></div>
-<div name="slug" id="slug"></div>
 <div name="author" id="author"></div>
 <div name="synopsis" id="synopsis"></div>
 <div name="image" id="image"></div>
@@ -55,7 +55,6 @@
 		const authorElement = document.getElementById('author');
 		const synopsisElement = document.getElementById('synopsis');
 		const imageElement = document.getElementById('image');
-		const slugElement = document.getElementById('slug');
 		
 		const titleElementH = document.getElementById('titleH');
 		const authorElementH = document.getElementById('authorH');
@@ -72,7 +71,6 @@
 			const slug = title.replace(/\s+/g, '-').toLowerCase();
 
 			titleElement.innerHTML = `<h2>${book.title}</h2>`;
-			slugElement.innerHTML = slug;
 			authorElement.innerHTML = `<p>By: ${book.authors ? book.authors.join(', ') : 'Unknown'}</p>`;
 			synopsisElement.innerHTML = `<br><p><u>Story Synopsis:</u></p><p>${synopsis}</p>`;
 			imageElement.innerHTML = coverUrl ? `<img src="${coverUrl}" alt="Book Cover" style="height: 20%; width: 20%;" class="img-thumbnail">` : '';
@@ -91,4 +89,38 @@
 	}
 	
 	document.getElementById('srINP').addEventListener('keypress', handleKeyPress);
+	
+	function fetchSuggestions() 
+	{
+		const title = document.getElementById('srINP').value;
+		const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=5`;
+
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => displaySuggestions(data))
+			.catch(error => console.error('Error:', error));
+	}
+
+	function displaySuggestions(data) 
+	{
+		const suggestionsElement = document.getElementById('suggestions');
+
+		if (data.items && data.items.length > 0) {
+			const suggestions = data.items.map(item => item.volumeInfo.title);
+			suggestionsElement.innerHTML = suggestions.map(suggestion => `<div class="suggestion-item" onclick="selectSuggestion('${suggestion}')">${suggestion}</div>`).join('');
+			suggestionsElement.style.display = 'block';
+		} else {
+			suggestionsElement.innerHTML = '';
+			suggestionsElement.style.display = 'none';
+		}
+	}
+
+	function selectSuggestion(suggestion) 
+	{
+		document.getElementById('srINP').value = suggestion;
+		document.getElementById('suggestions').style.display = 'none';
+		searchBook();
+	}
+
+	document.getElementById('srINP').addEventListener('input', fetchSuggestions);
 </script>

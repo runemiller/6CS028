@@ -9,6 +9,7 @@ use App\Controllers\News;
 use App\Controllers\Books;
 use App\Controllers\Marks;
 use App\Controllers\Front;
+use App\Controllers\Ajax;
 
 /**
  * @var RouteCollection $routes
@@ -34,6 +35,7 @@ $routes->get('books', [Books::class, 'index']);
 $routes->get('books/new', [Books::class, 'new']);
 $routes->post('books', [Books::class, 'create']);
 $routes->get('books/(:segment)', [Books::class, 'show']);
+$routes->get('ajax/get/(:segment)', [Ajax::class, 'get']);
 
 $routes->get('marks', [Marks::class, 'index']);
 $routes->get('marks/new', [Marks::class, 'new']);
