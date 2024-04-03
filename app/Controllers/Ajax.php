@@ -13,4 +13,20 @@ class Ajax extends BaseController
 		
 		print(json_encode($data));
 	}
+	
+	public function sortAuthor()
+	{
+		$model = model(BooksModel::class);
+		$data = $model->sortByAuthor();
+		
+		print(json_encode($data));
+	}
+	
+	public function sortTitle()
+	{
+		$model = model(BooksModel::class);
+		$data = $model->sortByTitle();
+		
+		print(json_encode($data));
+	}
 }

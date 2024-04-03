@@ -2,6 +2,7 @@
 
     <h2><?= esc($title) ?></h2>
 	<p><a href="/books/new">Create New Book Entry</a></p>
+	<p><a class="btn btn-outline-secondary btn-sm mt-2" onclick="sortByAuthor()">Sort by Author</a> <a class="btn btn-outline-secondary btn-sm mt-2" onclick="sortByTitle()">Sort by Title</a></p>
 	<br><br>
 	<p id="ajaxArticle"></p>
 	<br><br>
@@ -37,7 +38,35 @@
 			.then(response => response.json())
 			.then(response => 
 			{
-				document.getElementById("ajaxArticle").innerHTML = response.title + ": " + response.synopsis;
+				document.getElementById("ajaxArticle").innerHTML = response.title + " by " + response.author + ": " + response.synopsis;
+			})
+			.catch(err => 
+			{
+				console.log(err);
+			});
+	}
+	
+	function sortByAuthor()
+	{
+		fetch('http://localhost/ajax/get/sortAuthor')
+			.then(response => response.json())
+			.then(response => 
+			{
+				document.getElementById("ajaxArticle").innerHTML = response.title;
+			})
+			.catch(err => 
+			{
+				console.log(err);
+			});
+	}
+	
+	function sortByTitle()
+	{
+		fetch('http://localhost/ajax/get/sortTitle')
+			.then(response => response.json())
+			.then(response => 
+			{
+				document.getElementById("ajaxArticle").innerHTML = response.title;
 			})
 			.catch(err => 
 			{

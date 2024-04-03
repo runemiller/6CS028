@@ -35,7 +35,10 @@ $routes->get('books', [Books::class, 'index']);
 $routes->get('books/new', [Books::class, 'new']);
 $routes->post('books', [Books::class, 'create']);
 $routes->get('books/(:segment)', [Books::class, 'show']);
+$routes->get('ajax/get/sortAuthor', [Ajax::class, 'sortAuthor']);
+$routes->get('ajax/get/sortTitle', [Ajax::class, 'sortTitle']);
 $routes->get('ajax/get/(:segment)', [Ajax::class, 'get']);
+
 
 $routes->get('marks', [Marks::class, 'index']);
 $routes->get('marks/new', [Marks::class, 'new']);
