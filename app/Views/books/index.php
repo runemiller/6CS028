@@ -4,7 +4,9 @@
 	<p><a href="/books/new">Create New Book Entry</a></p>
 	<p><a class="btn btn-outline-secondary btn-sm mt-2" onclick="sortByAuthor()">Sort by Author</a> <a class="btn btn-outline-secondary btn-sm mt-2" onclick="sortByTitle()">Sort by Title</a> <a class="btn btn-outline-secondary btn-sm mt-2" onclick="sortByDefault()">Sort by Default</a></p>
 	<br>
-	<p style="display: none;" id="ajaxArticle"><br></p>
+	<div id="div">
+		<p id="content"></p>
+	</div>
 	<?php foreach ($books as $books_item): ?>
 
         <h3 id="title"><?= esc($books_item['title']) ?></h3>
@@ -17,6 +19,7 @@
         </div>
         <p id="viewBook-btn"><a class="btn btn-outline-secondary btn-sm mt-2" href="/books/<?= esc($books_item['slug'], 'url') ?>">View Book</a></p>
 		<p id="viewAjax-btn"><a class="btn btn-outline-secondary btn-sm mt-2" onclick="getData('<?= esc($books_item['slug'], 'url') ?>')">View Book via Ajax</a></p>
+		<div class="popup" id="popup"></div>
 		
 		<br><br>
 
@@ -30,6 +33,32 @@
 
 <?php endif ?>
 
+<style>
+	.popup {
+		width: 40%;
+		background: #a1c6ff;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0.1);
+		text-align: center;
+		padding: 20px;
+		color: #333;
+		visibility: hidden;
+		transition: all 0.4s ease-in-out;
+	}
+
+	.open-popup {
+		visibility: visible;
+		top: 50%;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+</style>
+
 <script>
 	function getData(slug)
 	{
@@ -37,8 +66,9 @@
 			.then(response => response.json())
 			.then(response => 
 			{
-				document.getElementById("ajaxArticle").style.display = "inline";
-				document.getElementById("ajaxArticle").innerHTML = "<h3>"+response.title+"</h3><h5>By: "+response.author+"</h5><p>"+response.synopsis+"</p><p><a class='btn btn-outline-secondary btn-sm mt-2' href='/books/"+response.slug+"'>View Book</a></p>";
+				let popup = document.getElementById('popup');
+				popup.classList.add('open-popup');
+				document.getElementById('popup').innerHTML = "<h3>"+response.title+"</h3><h5>By: "+response.author+"</h5><p>"+response.synopsis+"</p><p><a class='btn btn-outline-secondary btn-sm mt-2' href='/books/"+response.slug+"'>View Book</a></p>";
 			})
 			.catch(err => 
 			{
@@ -52,8 +82,13 @@
 			.then(response => response.json())
 			.then(response => 
 			{
-				document.getElementById("ajaxArticle").style.display = "inline";
-				document.getElementById("ajaxArticle").innerHTML = "<h3>"+response.title+"</h3><h5>By: "+response.author+"</h5><p>"+response.synopsis+"</p><p><a class='btn btn-outline-secondary btn-sm mt-2' href='/books/"+response.slug+"'>View Book</a></p>";
+				let len = response.length;
+				let i;
+				for (i = 0; i < len; i++) 
+				{
+					title += "<h3>" + response[i].title + "</h3><h5>By: " + response[i].author + "</h5><p>" + response[i].synopsis + "</p><p><a class='btn btn-outline-secondary btn-sm mt-2' href='/books/" + response[i].slug + "'>View Book</a></p><br>";
+				}
+				document.getElementById("content").innerHTML = title;
 				<?php foreach ($books as $books_item): ?>
 					document.getElementById("title").remove();
 					document.getElementById("author").remove();
@@ -74,8 +109,13 @@
 			.then(response => response.json())
 			.then(response => 
 			{
-				document.getElementById("ajaxArticle").style.display = "inline";
-				document.getElementById("ajaxArticle").innerHTML = "<h3>"+response.title+"</h3><h5>By: "+response.author+"</h5><p>"+response.synopsis+"</p><p><a class='btn btn-outline-secondary btn-sm mt-2' href='/books/"+response.slug+"'>View Book</a></p>";
+				let len = response.length;
+				let i;
+				for (i = 0; i < len; i++) 
+				{
+					title += "<h3>" + response[i].title + "</h3><h5>By: " + response[i].author + "</h5><p>" + response[i].synopsis + "</p><p><a class='btn btn-outline-secondary btn-sm mt-2' href='/books/" + response[i].slug + "'>View Book</a></p><br>";
+				}
+				document.getElementById("content").innerHTML = title;
 				<?php foreach ($books as $books_item): ?>
 					document.getElementById("title").remove();
 					document.getElementById("author").remove();
