@@ -11,17 +11,19 @@
 <div name="title" id="title"></div>
 <div name="author" id="author"></div>
 <div name="synopsis" id="synopsis"></div>
+<div name="published" id="published"></div>
 <div name="image" id="image"></div>
 
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors() ?>
 
-<form action="/home" method="post">
+<form action="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/home" method="post">
     <?= csrf_field() ?>
 	<input type="hidden" name="titleH" id="titleH" value="<?= set_value('title') ?>">
 	<input type="hidden" name="slugH" id="slugH" value="<?= set_value('slug') ?>">
 	<input type="hidden" name="authorH" id="authorH" value="<?= set_value('author') ?>">
 	<input type="hidden" name="synopsisH" id="synopsisH" value="<?= set_value('synopsis') ?>">
+	<input type="hidden" name="publishedH" id="publishedH" value="<?= set_value('published') ?>">
 	<input type="hidden" name="imageH" id="imageH" value="<?= set_value('image') ?>">
 	<br>
 	<input class="btn btn-outline-secondary btn-sm" type="submit" value="Add Book">
@@ -54,37 +56,42 @@
 		const titleElement = document.getElementById('title');
 		const authorElement = document.getElementById('author');
 		const synopsisElement = document.getElementById('synopsis');
+		const publishedElement = document.getElementById('published');
 		const imageElement = document.getElementById('image');
 		
 		const titleElementH = document.getElementById('titleH');
 		const authorElementH = document.getElementById('authorH');
 		const synopsisElementH = document.getElementById('synopsisH');
+		const publishedElementH = document.getElementById('publishedH');
 		const imageElementH = document.getElementById('imageH');
 		const slugElementH = document.getElementById('slugH');
 
 		if (data.items && data.items.length > 0) 
 		{
 			const book = data.items[0].volumeInfo;
-			const coverUrl = book.imageLinks ? book.imageLinks.thumbnail : '';
-			const synopsis = book.description ? book.description : 'No synopsis available';
 			const title = book.title;
+			const author = book.authors ? book.authors.join(', ') : 'Unknown';
+			const synopsis = book.description ? book.description : 'No synopsis available';
+			const published = book.publishedDate ? book.publishedDate : '2000-01-01';
+			const image = book.imageLinks ? book.imageLinks.thumbnail : '';
 			const slug = title.replace(/\s+/g, '-').toLowerCase();
 
-			titleElement.innerHTML = `<h2>${book.title}</h2>`;
-			authorElement.innerHTML = `<p>By: ${book.authors ? book.authors.join(', ') : 'Unknown'}</p>`;
+			titleElement.innerHTML = `<h2>${title}</h2>`;
+			authorElement.innerHTML = `<p>By: ${author}</p>`;
 			synopsisElement.innerHTML = `<br><p><u>Story Synopsis:</u></p><p>${synopsis}</p>`;
-			imageElement.innerHTML = coverUrl ? `<img src="${coverUrl}" alt="Book Cover" style="height: 20%; width: 20%;" class="img-thumbnail">` : '';
+			publishedElement.innerHTML = `<br><p>Orignally published: ${published}</p>`;
+			imageElement.innerHTML = `<img src="${image}" alt="Book Cover" style="height: 20%; width: 20%;" class="img-thumbnail">`;
 			
-			titleElementH.value = `${book.title}`;
+			titleElementH.value = title;
 			slugElementH.value = slug;
-			authorElementH.value = `${book.authors ? book.authors.join(', ') : 'Unknown'}`;
-			synopsisElementH.value = `${synopsis}`;
-			imageElementH.value = coverUrl;
+			authorElementH.value = author;
+			synopsisElementH.value = synopsis;
+			publishedElementH.value = published;
+			imageElementH.value = image;
 		} 
 		else 
 		{
-			detailsElement.innerHTML = 'No book found';
-			imageElement.innerHTML = '';
+			titleElement.innerHTML = 'No book found';
 		}
 	}
 	

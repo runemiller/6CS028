@@ -7,13 +7,13 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/home/">Home</a>
+					<a class="nav-link active" aria-current="page" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/home/">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" href="/books/">Books</a>
+					<a class="nav-link active" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/">Books</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" href="/marks/">Bookmarks</a>
+					<a class="nav-link active" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks/">Bookmarks</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +31,7 @@
 				</li>
 			</ul>
 			<div class="d-flex flex-row-reverse">
-				<a class="nav-link active" aria-current="page" href="/home/search">Search</a>
+				<a class="nav-link active" aria-current="page" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/home/search">Search</a>
 			</div>
 		</div>
 	</div>

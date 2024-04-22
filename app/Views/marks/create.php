@@ -3,7 +3,7 @@
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors() ?>
 
-<form action="/marks" method="post">
+<form action="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks" method="post">
     <?= csrf_field() ?>
 	
 	<label for="name">Name</label>

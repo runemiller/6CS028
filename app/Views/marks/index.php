@@ -1,7 +1,7 @@
 <?php if (! empty($marks) && is_array($marks)): ?>
 
 	<h2><?= esc($title) ?></h2>
-	<p><a href="/marks/new">Create New Bookmark Entry</a></p>
+	<p><a href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks/new">Create New Bookmark Entry</a></p>
 	<br><br>
 	<?php foreach ($marks as $marks_item): ?>
 	
@@ -10,7 +10,7 @@
 		<div class="main">
 			<?= esc($marks_item['caption']) ?>
         </div>
-		<p><a class="btn btn-outline-secondary btn-sm mt-2" href="/marks/<?= esc($marks_item['slug'], 'url') ?>">View Bookmark</a></p>
+		<p><a class="btn btn-outline-secondary btn-sm mt-2" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks/<?= esc($marks_item['slug'], 'url') ?>">View Bookmark</a></p>
 		
 		<br><br>
 		

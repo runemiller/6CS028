@@ -3,7 +3,7 @@
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors() ?>
 
-<form action="/books" method="post">
+<form action="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books" method="post">
     <?= csrf_field() ?>
 
     <label for="title">Title</label>
@@ -16,6 +16,10 @@
 
     <label for="synopsis">Synopsis</label>
     <textarea name="synopsis" cols="45" rows="4"><?= set_value('synopsis') ?></textarea>
+    <br>
+	
+	<label for="published">Data Published</label>
+    <input type="date" name="published" value="<?= set_value('published') ?>">
     <br>
 	
 	<label for="image">Image Link</label>

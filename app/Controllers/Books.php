@@ -54,12 +54,13 @@ class Books extends BaseController
     {
         helper('form');
 
-        $data = $this->request->getPost(['title', 'author', 'synopsis', 'image']);
+        $data = $this->request->getPost(['title', 'author', 'synopsis', 'published', 'image']);
 
         if (! $this->validateData($data, [
             'title' => 'required|max_length[255]|min_length[3]',
 			'author' => 'required|max_length[255]|min_length[3]',
             'synopsis'  => 'required|max_length[9000]|min_length[10]',
+			'published' => 'required',
 			'image'  => 'required|max_length[1000]|min_length[10]',
         ])) {
             return $this->new();
@@ -74,6 +75,7 @@ class Books extends BaseController
             'slug'  => url_title($post['title'], '-', true),
             'author'  => $post['author'],
 			'synopsis'  => $post['synopsis'],
+			'published'  => $post['published'],
 			'image'  => $post['image'],
         ]);
 

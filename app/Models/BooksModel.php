@@ -8,7 +8,7 @@ class BooksModel extends Model
 {	
     protected $table = 'books';
 	
-	protected $allowedFields = ['title', 'slug', 'author', 'synopsis', 'image'];
+	protected $allowedFields = ['title', 'slug', 'author', 'synopsis', 'published', 'image'];
 	
 	public function getBooks($slug = false)
     {
@@ -22,12 +22,15 @@ class BooksModel extends Model
 	public function sortByAuthor()
 	{		
 		return $this->orderBy('author', 'ASC')->findAll();
-		//return $this->orderBy('author', 'ASC')->first();
 	}
 	
 	public function sortByTitle()
 	{		
 		return $this->orderBy('title', 'ASC')->findAll();
-		//return $this->orderBy('title', 'ASC')->first();
+	}
+	
+	public function sortByDate()
+	{
+		return $this->orderBy('published', 'ASC')->findAll();
 	}
 }

@@ -29,4 +29,12 @@ class Ajax extends BaseController
 		
 		print(json_encode($data));
 	}
+	
+	public function sortDate()
+	{
+		$model = model(BooksModel::class);
+		$data = $model->sortByDate();
+		
+		print(json_encode($data));
+	}
 }

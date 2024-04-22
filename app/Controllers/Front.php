@@ -39,13 +39,14 @@ class Front extends BaseController
     {
         helper('form');
 
-        $data = $this->request->getPost(['titleH', 'slugH', 'authorH', 'synopsisH', 'imageH']);
+        $data = $this->request->getPost(['titleH', 'slugH', 'authorH', 'synopsisH', 'publishedH', 'imageH']);
 
         if (! $this->validateData($data, [
             'titleH' => 'required|max_length[255]|min_length[3]',
 			'slugH' => 'required|max_length[255]|min_length[3]',
 			'authorH' => 'required|max_length[255]|min_length[3]',
             'synopsisH'  => 'required|max_length[9000]|min_length[10]',
+			'publishedH' => 'required',
 			'imageH'  => 'required|max_length[1000]|min_length[10]',
         ])) {
             return $this->search();
@@ -60,6 +61,7 @@ class Front extends BaseController
             'slug'  => $post['slugH'],
             'author'  => $post['authorH'],
 			'synopsis'  => $post['synopsisH'],
+			'published' => $post['publishedH'],
 			'image'  => $post['imageH'],
         ]);
 

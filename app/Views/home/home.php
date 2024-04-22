@@ -9,7 +9,7 @@
 
 				<figure style="margin-right: 60px;">
 					<img src="<?= esc($books_item['image']) ?>" style="height: 235px; width: 155px;" class="img-thumbnail">
-					<figcaption style="color: black; width: 160px; text-align: center;"><a href="/books/<?= esc($books_item['slug'], 'url') ?>"><?= esc($books_item['title']) ?></a></figcaption>
+					<figcaption style="color: black; width: 160px; text-align: center;"><a href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/<?= esc($books_item['slug'], 'url') ?>"><?= esc($books_item['title']) ?></a></figcaption>
 				</figure>
 
 			<?php endforeach ?>
@@ -34,7 +34,7 @@
 
 				<figure style="margin-right: 60px;">
 					<img src="<?= esc($marks_item['image']) ?>" style="height: 240px; width: 70px; margin-left: 30%;" class="img-thumbnail">
-					<figcaption style="color: black; width: 160px; text-align: center;"><a href="/marks/<?= esc($marks_item['slug'], 'url') ?>"><?= esc($marks_item['name']) ?></a></figcaption>
+					<figcaption style="color: black; width: 160px; text-align: center;"><a href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks/<?= esc($marks_item['slug'], 'url') ?>"><?= esc($marks_item['name']) ?></a></figcaption>
 				</figure>
 
 			<?php endforeach ?>
