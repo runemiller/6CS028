@@ -3,11 +3,11 @@
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors() ?>
 
-<form action="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books" method="post" enctype="multipart/form-data">
+<form action="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books" method="post">
     <?= csrf_field() ?>
 
     <label for="title">Title</label>
-    <input type="input" name="title" value="<?= set_value('title') ?>">
+    <input type="input" name="title" value="">
     <br>
 	
 	<label for="author">Author</label>
@@ -25,10 +25,6 @@
 	<label for="image">Image Link</label>
     <textarea name="image" cols="45" rows="4"><?= set_value('image') ?></textarea>
     <br>
-	
-	<label for="photo">Take Photo With Camera</label>
-	<input type="file" name="photo" accept="image/*" capture="camera" value="<?= set_value('photo') ?>">
-	<br>
 
     <input class="btn btn-outline-secondary btn-sm" type="submit" name="submit" value="Add book">
 </form>

@@ -9,25 +9,20 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/home/">Home</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/">Books</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks/">Bookmarks</a>
-				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Dropdown
+					Books
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
+						<li><a class="dropdown-item" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/">Book List</a></li>
+						<li><a class="dropdown-item" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/new">Create Book</a></li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><a class="dropdown-item" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/the-name-of-the-wind">View Top Rated Book</a></li>
+						<li><a class="dropdown-item" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/books/the-fellowship-of-the-ring">View Top Viewed Book</a></li>
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" aria-disabled="true">Disabled</a>
+					<a class="nav-link active" href="https://mi-linux.wlv.ac.uk/~2112834/6CS028/public/marks/">Bookmarks</a>
 				</li>
 			</ul>
 			<div class="d-flex flex-row-reverse">
