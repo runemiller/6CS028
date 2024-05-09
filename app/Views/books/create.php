@@ -27,8 +27,9 @@
     <br>
 	
 	<label for="photo">Take Photo With Camera</label>
-	<input type="file" name="photo" accept="image/*" capture="camera" value="<?= set_value('photo') ?>">
+	<input type="file" name="image" accept="image/*" capture="camera">
 	<br>
 
     <input class="btn btn-outline-secondary btn-sm" type="submit" name="submit" value="Add book">
 </form>
+

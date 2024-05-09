@@ -25,6 +25,9 @@
 	<input type="hidden" name="synopsisH" id="synopsisH" value="<?= set_value('synopsis') ?>">
 	<input type="hidden" name="publishedH" id="publishedH" value="<?= set_value('published') ?>">
 	<input type="hidden" name="imageH" id="imageH" value="<?= set_value('image') ?>">
+	<input type="hidden" name="nameH" id="nameH" value="<?= set_value('name') ?>">
+	<input type="hidden" name="typeH" id="typeH" value="<?= set_value('type') ?>">
+	<input type="hidden" name="dataH" id="dataH" value="<?= set_value('data') ?>">
 	<br>
 	<input class="btn btn-outline-secondary btn-sm" type="submit" value="Add Book">
 </form>
@@ -64,6 +67,9 @@
 		const synopsisElementH = document.getElementById('synopsisH');
 		const publishedElementH = document.getElementById('publishedH');
 		const imageElementH = document.getElementById('imageH');
+		const nameElementH = document.getElementById('nameH');
+		const typeElementH = document.getElementById('typeH');
+		const dataElementH = document.getElementById('dataH');
 		const slugElementH = document.getElementById('slugH');
 
 		if (data.items && data.items.length > 0) 
@@ -74,6 +80,9 @@
 			const synopsis = book.description ? book.description : 'No synopsis available';
 			const published = book.publishedDate ? book.publishedDate : '2000-01-01';
 			const image = book.imageLinks ? book.imageLinks.thumbnail : '';
+			const name = '';
+			const type = '';
+			const dat = '';
 			const slug = title.replace(/\s+/g, '-').toLowerCase();
 
 			titleElement.innerHTML = `<h2>${title}</h2>`;
@@ -88,6 +97,9 @@
 			synopsisElementH.value = synopsis;
 			publishedElementH.value = published;
 			imageElementH.value = image;
+			nameElementH.value = name;
+			typeElementH.value = type;
+			dataElementH.value = dat;
 		} 
 		else 
 		{

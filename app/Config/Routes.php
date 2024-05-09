@@ -20,7 +20,7 @@ $routes->get('books', [Books::class, 'index']);
 $routes->get('books/new', [Books::class, 'new']);
 $routes->post('books', [Books::class, 'create']);
 $routes->get('books/edit', [Books::class, 'edit']);
-$routes->post('books/delete', [Books::class, 'delete']);
+$routes->post('books/delete', [Books::class, 'del']);
 $routes->get('books/(:segment)', [Books::class, 'show']);
 $routes->get('ajax/get/sortAuthor', [Ajax::class, 'sortAuthor']);
 $routes->get('ajax/get/sortTitle', [Ajax::class, 'sortTitle']);

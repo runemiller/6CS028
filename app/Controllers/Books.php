@@ -54,7 +54,7 @@ class Books extends BaseController
     {
         helper('form');
 
-        $data = $this->request->getPost(['title', 'author', 'synopsis', 'published', 'image', 'photo']);
+        $data = $this->request->getPost(['title', 'author', 'synopsis', 'published', 'image']);
 
         if (! $this->validateData($data, [
             'title' => 'required|max_length[255]|min_length[3]',
@@ -62,7 +62,6 @@ class Books extends BaseController
             'synopsis'  => 'required|max_length[9000]|min_length[10]',
 			'published' => 'required',
 			'image'  => 'max_length[1000]',
-			'photo' => 'max_length[10000]',
         ])) {
             return $this->new();
         }
@@ -78,7 +77,10 @@ class Books extends BaseController
 			'synopsis'  => $post['synopsis'],
 			'published'  => $post['published'],
 			'image'  => $post['image'],
-			'photo'  => $post['photo'],
+			'name' => $_FILES['image']['name'],
+			'type' => $_FILES['image']['type'],
+			'data' => $_FILES['image']['tmp_name'],
+			//'data' => file_get_contents($_FILES['image']['tmp_name']),
         ]);
 
         return view('templates/header', ['title' => 'Add a book'])
@@ -97,7 +99,7 @@ class Books extends BaseController
             . view('templates/footer');
 	}
 	
-	public function delete()
+	public function del()
 	{
 		helper('form');
 

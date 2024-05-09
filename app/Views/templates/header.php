@@ -49,6 +49,16 @@
 			transform: translate(-50%, -50%) scale(1);
 		}
 		
+		.mq_img 
+		{
+			border: 5px solid white;
+		}
+		
+		.reg_img
+		{
+			border: 5px solid white;
+		}
+		
 		@media screen and (max-width: 550px) 
 		{
 			.mq
@@ -69,6 +79,7 @@
 				margin-left: auto;
 				margin-right: auto;
 				width: 50%;
+				border: 5px solid white;
 			}
 			.reg_img
 			{
@@ -81,6 +92,7 @@
 			.reg_img
 			{
 				visibility: visable;
+				border: 5px solid white;
 			}
 			.mq_img
 			{

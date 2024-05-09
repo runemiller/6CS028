@@ -8,7 +8,7 @@ class BooksModel extends Model
 {	
     protected $table = 'books';
 	
-	protected $allowedFields = ['title', 'slug', 'author', 'synopsis', 'published', 'image', 'photo'];
+	protected $allowedFields = ['title', 'slug', 'author', 'synopsis', 'published', 'image', 'name', 'type', 'data'];
 	
 	public function getBooks($slug = false)
     {
